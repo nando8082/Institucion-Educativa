@@ -45,18 +45,18 @@ public class EstudianteFacade extends AbstractFacade<Estudiante>{
         }
     }
     
-    //Buscar al empleado por la ID
+    //Buscar al estudiante por la ID
     public Estudiante BuscoPorId(int id){
         return em.find(Estudiante.class, id);
     }
     
-    //Elimiar al empleado por ID
+    //Elimiar al estudiante por ID
     public void eliminar(int id){
         Estudiante estudiante = BuscoPorId(id);
         em.remove(estudiante);
     }
     
-    //Para que no exista error al no existir empleados en la base
+    //Para que no exista error al no existir estudiantes en la base
     public Optional<Estudiante> opcional(int id){
         return Optional.ofNullable(BuscoPorId(id));
     }
