@@ -5,7 +5,7 @@
 package ec.edu.ups.ejb;
 
 import ec.edu.ups.entidades.Docente;
-import ec.edu.ups.entidades.Estudiante;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -16,8 +16,9 @@ import java.util.Optional;
  *
  * @author PAUL
  */
+@Stateless
 public class DocenteFacade extends AbstractFacade<Docente>{
-    @PersistenceContext(name="institucionEducativa")
+    @PersistenceContext(name="my_persistence_unit")
     private EntityManager em;
 
     public DocenteFacade(){

@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Objects;
 
 /**
  *
@@ -28,12 +29,12 @@ public class Docente implements Serializable{
     private String telefono;
     private String correo;
     private String direccion;
-    private Date fechaNacimiento;
+    //private Date fechaNacimiento;
 
     public Docente() {
     }
 
-    public Docente(int id, String nombre, String apellido, String cedula, String telefono, String correo, String direccion, Date fechaNacimiento) {
+    public Docente(int id, String nombre, String apellido, String cedula, String telefono, String correo, String direccion) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -41,7 +42,6 @@ public class Docente implements Serializable{
         this.telefono = telefono;
         this.correo = correo;
         this.direccion = direccion;
-        this.fechaNacimiento = fechaNacimiento;
     }
 
     public int getId() {
@@ -100,19 +100,58 @@ public class Docente implements Serializable{
         this.direccion = direccion;
     }
 
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + this.id;
+        hash = 59 * hash + Objects.hashCode(this.nombre);
+        hash = 59 * hash + Objects.hashCode(this.apellido);
+        hash = 59 * hash + Objects.hashCode(this.cedula);
+        hash = 59 * hash + Objects.hashCode(this.telefono);
+        hash = 59 * hash + Objects.hashCode(this.correo);
+        hash = 59 * hash + Objects.hashCode(this.direccion);
+        return hash;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Docente other = (Docente) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.apellido, other.apellido)) {
+            return false;
+        }
+        if (!Objects.equals(this.cedula, other.cedula)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefono, other.telefono)) {
+            return false;
+        }
+        if (!Objects.equals(this.correo, other.correo)) {
+            return false;
+        }
+        return Objects.equals(this.direccion, other.direccion);
     }
-    
+
     @Override
     public String toString() {
-        return "Docente{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", telefono="
-                + telefono + ", correo=" + correo + ", direccion=" + direccion + ", fechaNacimiento=" + fechaNacimiento + '}';
+        return "Docente{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion + '}';
     }
+
+    
     
     
 }
