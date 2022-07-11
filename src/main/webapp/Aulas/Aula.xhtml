@@ -200,80 +200,59 @@
                     <h:form id="probarForm">
                                 <div class="col-sm-6">
                                     <!-- Buscar Cliente por nombre -->
-                                    <h:outputLabel value="Buscar docente por el nombre" for="Buscnombre"/>
-                                    <h:inputText id="Buscnombre" value="#{docenteControlador.docente.nombre}" class="form-control"/>
-                                    <h:commandButton value="Buscar Docente" action="#{docenteControlador.buscarPorNombre(docenteControlador.docente.nombre)}" class="btn btn-primary"/>
+                                    <h:outputLabel value="Buscar aula por el nombre" for="Buscnombre"/>
+                                    <h:inputText id="Buscnombre" value="#{aulaControlador.aula.nombre}" class="form-control"/>
+                                    <h:commandButton value="Buscar Aula" action="#{aulaControlador.buscarPorNombre(aulaControlador.aula.nombre)}" class="btn btn-primary"/>
                                 </div>
                                 <div class="col-sm-6">
-                                    <h:outputLabel value="Nombre del docente encontrado" for="nombreEnc"/>
-                                    <h:inputText value="#{docenteControlador.nombre}" id="nombrRec" class="form-control"/>
+                                    <h:outputLabel value="Nombre del aula encontrado" for="nombreEnc"/>
+                                    <h:inputText value="#{aulaControlador.nombre}" id="nombrRec" class="form-control"/>
                                 </div>
                     </h:form>
                                 
                 </div> 
                 <f:facet name="header">
-                    <h:outputText value="#{tituloDocente}"/>
+                    <h:outputText value="#{tituloAula}"/>
                 </f:facet>
                 <h:form id="crearForm">
-                    <h:commandButton value="Crear Docente" action="Formulario.xhtml" class="btn btn-primary"/>
+                    <h:commandButton value="Crear Aula" action="formu.xhtml" class="btn btn-primary"/>
                 </h:form>
-                <h:outputText value="No existen docentes en la base de datos!" rendered="#{empty listarDocentes}"/>
-                <h:dataTable value="#{listarDocentes}" var="doc" rendered="#{not empty listarDocentes}" class="table table-hover table-striped">
+                <h:outputText value="No existen aulas en la base de datos!" rendered="#{empty listadoAulas}"/>
+                <h:dataTable value="#{listadoAulas}" var="au" rendered="#{not empty listadoAulas}" class="table table-hover table-striped">
                     <h:column>
                         <f:facet name="header">
                         <h:outputText value="Id"/>
                         </f:facet>
-                        <h:outputText value="#{doc.id}"/>
+                        <h:outputText value="#{au.id}"/>
                     </h:column>
 
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Nombre"/>
                         </f:facet>
-                        <h:outputText value="#{doc.nombre}"/>
+                        <h:outputText value="#{au.nombre}"/>
                     </h:column>
 
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Apellido"/>
+                            <h:outputText value="Capacidad"/>
                         </f:facet>
-                        <h:outputText value="#{doc.apellido}"/>
+                        <h:outputText value="#{au.capacidad}"/>
                     </h:column>
 
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Cedula"/>
+                            <h:outputText value="Edificio"/>
                         </f:facet>
-                        <h:outputText value="#{doc.cedula}"/>
+                        <h:outputText value="#{au.edificio}"/>
                     </h:column>
 
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Telefono"/>
-                        </f:facet>
-                        <h:outputText value="#{doc.telefono}"/>
-                    </h:column>
-
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Correo"/>
-                        </f:facet>
-                        <h:outputText value="#{doc.correo}"/>
-                    </h:column>
-
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Direccion"/>
-                        </f:facet>
-                        <h:outputText value="#{doc.direccion}"/>
-                    </h:column>
-                    
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Editar"/>
                         </f:facet>
                         <h:form id="editarForm">
-                            <h:commandLink value="editar" action="#{docenteControlador.editar(doc.id)}" class="btn btn-sm btn-success"/>
+                            <h:commandLink value="editar" action="#{aulaControlador.editar(au.id)}" class="btn btn-sm btn-success"/>
                         </h:form>
                     </h:column>            
 
@@ -282,7 +261,7 @@
                             <h:outputText value="Eliminar"/>
                         </f:facet>
                         <h:form id="eliminarForm">
-                            <h:commandLink value="eliminar" action="#{docenteControlador.eliminar(doc.id)}" class="btn btn-sm btn-danger"
+                            <h:commandLink value="eliminar" action="#{aulaControlador.eliminar(au.id)}" class="btn btn-sm btn-danger"
                                            onclick="return confirm('Está seguro que desea eliminar?')"/>
                         </h:form>
                     </h:column>
@@ -331,3 +310,4 @@
 </h:body>
 
 </html>
+

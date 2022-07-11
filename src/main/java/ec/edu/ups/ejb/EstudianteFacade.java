@@ -19,7 +19,7 @@ import java.util.Optional;
 @Stateless
 public class EstudianteFacade extends AbstractFacade<Estudiante>{
 
-    @PersistenceContext(name="my_persistence_unit")
+    @PersistenceContext(name="jdbc/__institucionEducativa")
     private EntityManager em;
 
     public EstudianteFacade(){

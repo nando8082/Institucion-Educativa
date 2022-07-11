@@ -18,7 +18,7 @@ import java.util.Optional;
  */
 @Stateless
 public class DocenteFacade extends AbstractFacade<Docente>{
-    @PersistenceContext(name="my_persistence_unit")
+    @PersistenceContext(name="jdbc/__institucionEducativa")
     private EntityManager em;
 
     public DocenteFacade(){
@@ -44,18 +44,18 @@ public class DocenteFacade extends AbstractFacade<Docente>{
         }
     }
     
-    //Buscar al empleado por la ID
+    //Buscar al estudiante por la ID
     public Docente BuscoPorId(int id){
         return em.find(Docente.class, id);
     }
     
-    //Elimiar al empleado por ID
+    //Elimiar al estudiante por ID
     public void eliminar(int id){
         Docente docente = BuscoPorId(id);
         em.remove(docente);
     }
     
-    //Para que no exista error al no existir empleados en la base
+    //Para que no exista error al no existir estudiantes en la base
     public Optional<Docente> opcional(int id){
         return Optional.ofNullable(BuscoPorId(id));
     }

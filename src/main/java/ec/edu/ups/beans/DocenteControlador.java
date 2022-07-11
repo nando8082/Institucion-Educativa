@@ -20,19 +20,18 @@ import java.util.List;
  */
 @Model
 public class DocenteControlador {
-
     @EJB
     private DocenteFacade docenteFacade;
     private Docente docente;
     private int id;
-    private String nombres;
-
+    private String nombre;
+    
     @Produces
     @Model
-    public String titutoDocente() {
+    public String tituloDocente() {
         return "CRUD de Docentes";
     }
-
+    
     @PostConstruct
     public void init() {
         this.docente = new Docente();
@@ -52,53 +51,53 @@ public class DocenteControlador {
 
     public void setId(int id) {
         this.id = id;
+    }  
+
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getNombres() {
-        return nombres;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
+    
     @Produces
     @RequestScoped
-    @Named("listadoDocentes")
-    public List<Docente> listarDocentes() {
-        List<Docente> cli = docenteFacade.getDocente();
-        return cli;
+    @Named("listarDocentes")
+    public List<Docente>listarDocentes(){
+        List<Docente> doc = docenteFacade.getDocente();
+        return doc;
     }
-
-    public String guardar() {
+    
+    public String guardar(){
         try {
             this.docenteFacade.guardarDocente(docente);
         } catch (Exception e) {
         }
         return "Docente.xhtml?faces-redirect=true";
     }
-
-    public String eliminar() {
+    
+    public String eliminar(int id){
         docenteFacade.eliminar(id);
         return "Docente.xhtml?faces-redirect=true";
     }
-
+    
     @Produces
     @Model
-    public Docente docente() {
-        if (id != 0) {
-            docenteFacade.opcional(id).ifPresent(e -> {
+    public Docente estudiante(){
+        if(id != 0){
+            docenteFacade.opcional(id).ifPresent(e ->{
                 this.docente = e;
             });
         }
         return docente;
     }
-
-    public String editar(int id) {
+    
+    public String editar(int id){
         this.id = id;
-        if (id != 0) {
-            docenteFacade.opcional(id).ifPresent(e -> {
-                this.docente = e;
+        if(id != 0){
+            docenteFacade.opcional(id).ifPresent(e ->{
+                    this.docente = e;
             });
         }
         return "Formulario.xhtml";
@@ -133,8 +132,8 @@ public class DocenteControlador {
     
     public void buscarPorNombre(String nombre){
         System.out.println("*************************************************"+ nombre);
-        Docente cli = docenteFacade.getDocenteByName(nombre);
-        System.out.println("*************************************************"+ cli.getNombre()+" "+cli.getApellido());
-        nombres=(cli.getNombre()+" "+cli.getApellido());
+        Docente doc = docenteFacade.getDocenteByName(nombre);
+        System.out.println("*************************************************"+ doc.getNombre()+" "+doc.getApellido());
+        nombre=(doc.getNombre()+" "+doc.getApellido());
     }
 }

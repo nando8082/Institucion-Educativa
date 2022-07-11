@@ -17,7 +17,7 @@ import java.util.Objects;
  *
  * @author PAUL
  */
-@NamedQuery(name = "getDocente", query = "SELECT d FROM  Docente d")
+//@NamedQuery(name = "getDocente", query = "SELECT d FROM  Docente d")
 @Entity
 public class Docente implements Serializable{
     @Id
@@ -101,57 +101,7 @@ public class Docente implements Serializable{
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + this.id;
-        hash = 59 * hash + Objects.hashCode(this.nombre);
-        hash = 59 * hash + Objects.hashCode(this.apellido);
-        hash = 59 * hash + Objects.hashCode(this.cedula);
-        hash = 59 * hash + Objects.hashCode(this.telefono);
-        hash = 59 * hash + Objects.hashCode(this.correo);
-        hash = 59 * hash + Objects.hashCode(this.direccion);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Docente other = (Docente) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.apellido, other.apellido)) {
-            return false;
-        }
-        if (!Objects.equals(this.cedula, other.cedula)) {
-            return false;
-        }
-        if (!Objects.equals(this.telefono, other.telefono)) {
-            return false;
-        }
-        if (!Objects.equals(this.correo, other.correo)) {
-            return false;
-        }
-        return Objects.equals(this.direccion, other.direccion);
-    }
-
-    @Override
     public String toString() {
         return "Docente{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion + '}';
     }
-
-    
-    
-    
 }
