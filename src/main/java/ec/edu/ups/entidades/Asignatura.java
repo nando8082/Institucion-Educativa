@@ -24,9 +24,7 @@ public class Asignatura implements Serializable{
     private int id;
     private String nombre;
     private int nivel;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Grupo grupo;
-
+    
     public Asignatura() {
     }
 

@@ -21,21 +21,19 @@ public class Matricula {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Estudiante estudiante;
-    /*@OneToMany(fetch = FetchType.LAZY)
-    private Asignatura asignatura;
-    @OneToMany(fetch = FetchType.LAZY)
-    private Pension pension;*/
+    private Grupo grupo;
+    private Pension pension;
     private double vmatricula;
     private double vpension;
 
     public Matricula() {
     }
 
-    public Matricula(Long id, Estudiante estudiante, double vmatricula, double vpension) {
+    public Matricula(Long id, Estudiante estudiante, Grupo grupo, Pension pension, double vmatricula, double vpension) {
         this.id = id;
         this.estudiante = estudiante;
-        //this.asignatura = asignatura;
-        //this.pension = pension;
+        this.grupo = grupo;
+        this.pension = pension;
         this.vmatricula = vmatricula;
         this.vpension = vpension;
     }
@@ -56,12 +54,12 @@ public class Matricula {
         this.estudiante = estudiante;
     }
 
-    /*public Asignatura getAsignatura() {
-        return asignatura;
+    public Grupo getGrupo() {
+        return grupo;
     }
 
-    public void setAsignatura(Asignatura asignatura) {
-        this.asignatura = asignatura;
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
     }
 
     public Pension getPension() {
@@ -70,7 +68,7 @@ public class Matricula {
 
     public void setPension(Pension pension) {
         this.pension = pension;
-    }*/
+    }
 
     public double getVmatricula() {
         return vmatricula;
@@ -90,6 +88,8 @@ public class Matricula {
 
     @Override
     public String toString() {
-        return "Matricula{" + "id=" + id + ", estudiante=" + estudiante + ", vmatricula=" + vmatricula + ", vpension=" + vpension + '}';
+        return "Matricula{" + "id=" + id + ", estudiante=" + estudiante + ", grupo=" + grupo + ", pension=" + pension 
+                + ", vmatricula=" + vmatricula + ", vpension=" + vpension + '}';
     }
+
 }

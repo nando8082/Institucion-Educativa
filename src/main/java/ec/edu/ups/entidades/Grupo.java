@@ -20,13 +20,9 @@ public class Grupo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    /*@OneToMany(fetch = FetchType.LAZY)
     private Docente docente;
-    @OneToMany(fetch = FetchType.LAZY)
     private Aula aula;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "grupo")
     private Asignatura asignatura;
-    @OneToMany(fetch = FetchType.LAZY)
     private Horario horario;
 
     public Grupo() {
@@ -83,5 +79,5 @@ public class Grupo {
     @Override
     public String toString() {
         return "Grupo{" + "id=" + id + ", docente=" + docente + ", aula=" + aula + ", asignatura=" + asignatura + '}';
-    }*/
+    }
 }
