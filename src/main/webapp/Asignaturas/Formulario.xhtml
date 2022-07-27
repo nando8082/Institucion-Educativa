@@ -67,6 +67,10 @@
                     <a href="../Estudiantes/Estudiante.xhtml" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Estudiantes</a>
                     <a href="../Docentes/Docente.xhtml" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Docentes</a>
                     <a href="../Asignaturas/Asignatura.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Asignaturas</a>
+                    <a href="../Aulas/Aula.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Aulas</a>
+                    <a href="../Edificios/Edificio.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Edificios</a>
+                    <a href="../Grupos/Grupo.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Grupos</a>
+                    <a href="../Matriculas/Matricula.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Matricula</a>
                     <!--<div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Facturas</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -213,10 +217,10 @@
                 <p:message for="nombre" />
                 
                 <h:outputLabel value="Nivel" for="nivel"/>
-                <h:inputText id="nivel" value="#{asignaturaControlador.asignatura.nivel}" size="2"
+                <h:inputText id="nivel" value="#{asignaturaControlador.asignatura.nivel}" size="10"
                              class="form-control" required="true" requiredMessage="Ingrese un nivel."
                              validatorMessage="Inválido e intente nuevo">
-                    <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
+                    <f:validateRegex pattern="^[0-9a-zA-Z-\s]+$"/>
                 </h:inputText>
                 <p:watermark for="nivel" value="Ingrese un nivel." />
                 <p:message for="nivel" />

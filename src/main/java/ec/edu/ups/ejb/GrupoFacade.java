@@ -34,17 +34,17 @@ public class GrupoFacade extends AbstractFacade<Grupo>{
         return em.createQuery("select g from Grupo g left outer join fetch g.aula", Grupo.class).getResultList();
     }
     
-    /*public void guardar(Grupo grupo) {
+    public void guardar(Grupo grupo) {
         if (grupo.getId() != 0) {
             em.merge(grupo);
         } else {
             em.persist(grupo);
         }
-    }*/
+    }
     
     public Grupo porId(Long id) {
         //return em.find(Producto.class, id);
-        return em.createQuery("select g from Grupo g left outer join fetch g.aula where g.id=:id", Grupo.class)
+        return em.createQuery("select g from Grupo g left outer join fetch g.docente where g.id=:id", Grupo.class)
                 .setParameter("id", id)
                 .getSingleResult();
     }
@@ -58,10 +58,4 @@ public class GrupoFacade extends AbstractFacade<Grupo>{
     public Optional<Grupo> opcional(Long id) {
         return Optional.ofNullable(porId(id));
     }
-    
-    /*public Grupo getGrupoByName(String name) {
-        String jpql = "SELECT g FROM Producto g WHERE g.nombre = '" + name + "'";
-        Producto producto = (Producto) em.createQuery(jpql).getSingleResult();
-        return producto;
-    }*/
 }

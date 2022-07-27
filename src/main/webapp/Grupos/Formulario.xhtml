@@ -33,7 +33,6 @@
 
     <!-- Template Stylesheet -->
     <link href="../Recursos/css/style.css" rel="stylesheet"/>
-  
 </h:head>
 
     <h:body>
@@ -65,7 +64,7 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="../Admin.xhtml" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Inicio</a>
-                    <!--<div class="nav-item dropdown">
+                    <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Facturas</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="../Factura/factura.xhtml" class="dropdown-item">Crear una Factura</a>
@@ -74,18 +73,13 @@
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div>
-                    <a href="../Producto/Producto.xhtml" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Productos</a>
-                    <a href="../Sucursal/Sucursal.xhtml" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Sucursales</a>
-                    <a href="../Empleado/Empleado.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Empleados</a>
-                    <a href="../Proveedor/Proveedor.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Proveedores</a>-->
+                    <!--<a href="Producto.xhtml" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Productos</a>
+                    <a href="../Sucursal/Sucursal.xhtml" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Sucursales</a>-->
                     <a href="../Estudiantes/Estudiante.xhtml" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Estudiantes</a>
                     <a href="../Docentes/Docente.xhtml" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Docentes</a>
                     <a href="../Asignaturas/Asignatura.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Asignaturas</a>
-                    <a href="../Aulas/Aula.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Aulas</a>
-                    <a href="../Edificios/Edificio.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Edificios</a>
-                    <a href="../Grupos/Grupo.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Grupos</a>
-                    <a href="../Matriculas/Matricula.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Matricula</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
+                    <!--<a href="../Kardex/kardex.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Inventario</a>
+                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -195,29 +189,51 @@
 
 
 <!-- Blank Start -->
-  <div class="container-fluid pt-4 px-4 p-0">
-      <div class="bg-light rounded-top p-4 ">
+  <div class="container-fluid pt-4 px-4">
+      <div class="bg-light rounded-top p-4">
         <h:panelGrid border="1" class="table">
         <f:facet name="header">
-            <h:outputText value="Formulario Edificios"/>
+            <h:outputText value="Formulario Aulas"/>
         </f:facet>
-        <h:link outcome="Edificio" value="volver" class="btn btn-sm btn-primary my-2"/>
+        <h:link outcome="Aula" value="volver" class="btn btn-sm btn-primary my-2"/>
         <h:form>
             <h:panelGrid columns="1">
-                <!-- Nombre -->
-                <h:outputLabel value="Nombre" for="nombre"/>
-                <h:inputText id="nombre" value="#{edificioControlador.edificio.nombre}" size="50"
-                             class="form-control" required="true" requiredMessage="Ingrese su nombre."
-                             validatorMessage="Inválido e intente nuevo">
-                    <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
-                </h:inputText>
-                <p:watermark for="nombre" value="Ingrese su nombre." />
-                <p:message for="nombre" />
+                <!-- Nombre Producto -->
+                <h:outputLabel value="Docente" for="docente" class="col-form-label"/>
+                <h:selectOneMenu id="docente" value="#{grupoControlador.grupo.docente}" 
+                                 class="form-control" required="true"  requiredMessage="Seleccione un docente." 
+                                validatorMessage="Docente inválida">
+                    <f:selectItem itemLabel="--- Seleccione un docente ---" itemValue="#{null}"/>
+                    <f:selectItems value="#{listadoDocente}" var="doc" itemLabel="#{doc.nombre}"/>
+                    <f:converter binding="#{docenteConverter}"/>
+                </h:selectOneMenu>
+                <p:watermark for="docente" value="Seleccione un docente." />
+                <p:message for="docente" />
+                <!-- Precio -->
+                <h:outputLabel value="Aula" for="aula" class="col-form-label"/>
+                <h:selectOneMenu id="aula" value="#{grupoControlador.grupo.aula}" 
+                                 class="form-control" required="true"  requiredMessage="Seleccione un Aula." 
+                                validatorMessage="Aula inválida">
+                    <f:selectItem itemLabel="--- Seleccione un aula ---" itemValue="#{null}"/>
+                    <f:selectItems value="#{listadoAulas}" var="au" itemLabel="#{au.nombre}"/>
+                    <f:converter binding="#{aulaConverter}"/>
+                </h:selectOneMenu>
+                <p:watermark for="aula" value="Seleccione un aula." />
+                <p:message for="aula" />
+                <!-- Categoria -->
+                <h:outputLabel value="Asignatura" for="asignatura" class="col-form-label"/>
+                <h:selectOneMenu id="asignatura" value="#{grupoControlador.grupo.asignatura}" 
+                                 class="form-control" required="true"  requiredMessage="Seleccione una asignatura." 
+                                validatorMessage="Asignatura inválida">
+                    <f:selectItem itemLabel="--- Seleccione ua asignatura ---" itemValue="#{null}"/>
+                    <f:selectItems value="#{listadoAsignatura}" var="asig" itemLabel="#{asig.nombre}"/>
+                    <f:converter binding="#{asignaturaConverter}"/>
+                </h:selectOneMenu>
+                <p:watermark for="asignatura" value="Seleccione una asigantura." />
+                <p:message for="asignatura" /> 
                 
-               
-                <!-- Botón crear -->
-                <h:commandButton value="Crear" action="#{edificioControlador.guardar}" class="btn btn-primary"/>
-                <h:inputHidden value="#{edificioControlador.edificio.id}"/>
+                <h:commandButton value="Crear" action="#{grupoControlador.guardar}" class="btn btn-primary"/>
+                <h:inputHidden value="#{grupoControlador.id}"/>
             </h:panelGrid>
         </h:form>
 
@@ -266,3 +282,4 @@
 </h:body>
 
 </html>
+

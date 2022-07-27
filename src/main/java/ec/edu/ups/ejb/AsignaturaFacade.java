@@ -31,8 +31,8 @@ public class AsignaturaFacade extends AbstractFacade<Asignatura>{
         return em;
     }
 
-    public List<Asignatura>getAsignatura() {
-        Query query = em.createNamedQuery("getAsignatura");
+    public List<Asignatura> getAsignaturas() {
+        Query query = em.createNamedQuery("getAsignaturas");
         List<Asignatura> res = query.getResultList();
         return res;
     }
@@ -46,18 +46,18 @@ public class AsignaturaFacade extends AbstractFacade<Asignatura>{
     }
     
     //Buscar al empleado por la ID
-    public Asignatura BuscoPorId(int id){
+    public Asignatura BuscoPorId(Long id){
         return em.find(Asignatura.class, id);
     }
     
     //Elimiar al empleado por ID
-    public void eliminar(int id){
+    public void eliminar(long id){
         Asignatura asignatura = BuscoPorId(id);
         em.remove(asignatura);
     }
     
     //Para que no exista error al no existir empleados en la base
-    public Optional<Asignatura> opcional(int id){
+    public Optional<Asignatura> opcional(Long id){
         return Optional.ofNullable(BuscoPorId(id));
     }
     

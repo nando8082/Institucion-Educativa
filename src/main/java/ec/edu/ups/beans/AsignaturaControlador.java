@@ -24,7 +24,7 @@ public class AsignaturaControlador {
     @EJB
     private AsignaturaFacade asignaturaFacade;
     private Asignatura asignatura;
-    private int id;
+    private Long id;
     private String nombres;
     
     @Produces
@@ -46,11 +46,11 @@ public class AsignaturaControlador {
         this.asignatura = asignatura;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }  
 
@@ -66,7 +66,7 @@ public class AsignaturaControlador {
     @RequestScoped
     @Named("listadoAsignatura")
     public List<Asignatura>listarAsignaturas(){
-        List<Asignatura> asig = asignaturaFacade.getAsignatura();
+        List<Asignatura> asig = asignaturaFacade.getAsignaturas();
         return asig;
     }
     
@@ -94,7 +94,7 @@ public class AsignaturaControlador {
         return asignatura;
     }
     
-    public String editar(int id){
+    public String editar(Long id){
         this.id = id;
         if(id != 0){
             asignaturaFacade.opcional(id).ifPresent(e ->{

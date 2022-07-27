@@ -82,8 +82,7 @@ public class Aula {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 11 * hash + this.id;
-        hash = 11 * hash + Objects.hashCode(this.nombre);
+        hash = 53 * hash + Objects.hashCode(this.nombre);
         return hash;
     }
 

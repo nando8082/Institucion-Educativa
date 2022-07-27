@@ -17,28 +17,29 @@ import java.io.Serializable;
  *
  * @author PAUL
  */
+@NamedQuery(name = "getAsignaturas", query = "SELECT a FROM Asignatura a")
 @Entity
 public class Asignatura implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nombre;
-    private int nivel;
+    private String nivel;
     
     public Asignatura() {
     }
 
-    public Asignatura(int id, String nombre, int nivel) {
+    public Asignatura(Long id, String nombre, String nivel) {
         this.id = id;
         this.nombre = nombre;
         this.nivel = nivel;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -50,11 +51,11 @@ public class Asignatura implements Serializable{
         this.nombre = nombre;
     }
 
-    public int getNivel() {
+    public String getNivel() {
         return nivel;
     }
 
-    public void setNivel(int nivel) {
+    public void setNivel(String nivel) {
         this.nivel = nivel;
     }
 

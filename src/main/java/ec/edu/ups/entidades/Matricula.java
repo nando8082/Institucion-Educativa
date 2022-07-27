@@ -22,22 +22,23 @@ public class Matricula {
     private Long id;
     private Estudiante estudiante;
     private Grupo grupo;
-    private Pension pension;
+    //private Pension pension;
+    private Asignatura asignatura;
     private double vmatricula;
     private double vpension;
 
     public Matricula() {
     }
 
-    public Matricula(Long id, Estudiante estudiante, Grupo grupo, Pension pension, double vmatricula, double vpension) {
+    public Matricula(Long id, Estudiante estudiante, Grupo grupo, Asignatura asignatura, double vmatricula, double vpension) {
         this.id = id;
         this.estudiante = estudiante;
         this.grupo = grupo;
-        this.pension = pension;
+        this.asignatura = asignatura;
         this.vmatricula = vmatricula;
         this.vpension = vpension;
     }
-
+    
     public Long getId() {
         return id;
     }
@@ -62,14 +63,6 @@ public class Matricula {
         this.grupo = grupo;
     }
 
-    public Pension getPension() {
-        return pension;
-    }
-
-    public void setPension(Pension pension) {
-        this.pension = pension;
-    }
-
     public double getVmatricula() {
         return vmatricula;
     }
@@ -86,10 +79,18 @@ public class Matricula {
         this.vpension = vpension;
     }
 
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
+
+    public void setAsignatura(Asignatura asignatura) {
+        this.asignatura = asignatura;
+    }
+
     @Override
     public String toString() {
-        return "Matricula{" + "id=" + id + ", estudiante=" + estudiante + ", grupo=" + grupo + ", pension=" + pension 
-                + ", vmatricula=" + vmatricula + ", vpension=" + vpension + '}';
+        return "Matricula{" + "id=" + id + ", estudiante=" + estudiante + ", grupo=" + grupo + ", asignatura=" + asignatura + ", vmatricula=" + vmatricula + ", vpension=" + vpension + '}';
     }
+    
 
 }

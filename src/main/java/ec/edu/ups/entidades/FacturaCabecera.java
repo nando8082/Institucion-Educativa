@@ -5,10 +5,15 @@
 package ec.edu.ups.entidades;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -23,18 +28,24 @@ public class FacturaCabecera {
     private LocalDate fecha;
     private double subtotal;
     private double iva;
+    @ManyToOne
+    @JoinColumn
     private Estudiante estudiante;
+    
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<FacturaDetalle> detalles;
 
     public FacturaCabecera() {
     }
 
-    public FacturaCabecera(int id, double total, LocalDate fecha, double subtotal, double iva, Estudiante estudiante) {
+    public FacturaCabecera(int id, double total, LocalDate fecha, double subtotal, double iva, Estudiante estudiante, List<FacturaDetalle> detalles) {
         this.id = id;
         this.total = total;
         this.fecha = fecha;
         this.subtotal = subtotal;
         this.iva = iva;
         this.estudiante = estudiante;
+        this.detalles = detalles;
     }
 
     public int getId() {
@@ -85,11 +96,18 @@ public class FacturaCabecera {
         this.estudiante = estudiante;
     }
 
+    public List<FacturaDetalle> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(List<FacturaDetalle> detalles) {
+        this.detalles = detalles;
+    }
+
     @Override
     public String toString() {
-        return "FacturaCabecera{" + "id=" + id + ", total=" + total + ", fecha=" + fecha + ", subtotal=" 
-                + subtotal + ", iva=" + iva + ", estudiante=" + estudiante + '}';
+        return "FacturaCabecera{" + "id=" + id + ", total=" + total + ", fecha=" + fecha + ", subtotal=" + subtotal 
+                + ", iva=" + iva + ", estudiante=" + estudiante + ", detalles=" + detalles + '}';
     }
-    
     
 }

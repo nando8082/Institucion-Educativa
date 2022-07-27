@@ -23,7 +23,7 @@ public class Grupo {
     private Docente docente;
     private Aula aula;
     private Asignatura asignatura;
-    private Horario horario;
+    //private Horario horario;
 
     public Grupo() {
     }
@@ -68,13 +68,13 @@ public class Grupo {
         this.asignatura = asignatura;
     }
 
-    public Horario getHorario() {
+    /*public Horario getHorario() {
         return horario;
     }
 
     public void setHorario(Horario horario) {
         this.horario = horario;
-    }
+    }*/
 
     @Override
     public String toString() {

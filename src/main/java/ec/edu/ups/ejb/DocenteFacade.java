@@ -30,8 +30,8 @@ public class DocenteFacade extends AbstractFacade<Docente>{
         return em;
     }
 
-    public List<Docente>getDocente() {
-        Query query = em.createNamedQuery("getDocente");
+    public List<Docente>getDocentes() {
+        Query query = em.createNamedQuery("getDocentes");
         List<Docente> res = query.getResultList();
         return res;
     }

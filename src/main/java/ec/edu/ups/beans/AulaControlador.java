@@ -109,7 +109,6 @@ public class AulaControlador {
     
     public String editar(int id){
         this.id = id;
-        
         if (id != 0) {
             aulaFacade.opcional(id).ifPresent(p -> {
                 this.aula = p;

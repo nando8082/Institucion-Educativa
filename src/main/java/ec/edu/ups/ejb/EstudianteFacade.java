@@ -21,6 +21,7 @@ public class EstudianteFacade extends AbstractFacade<Estudiante>{
 
     @PersistenceContext(name="jdbc/__institucionEducativa")
     private EntityManager em;
+    private Estudiante estudiante;
 
     public EstudianteFacade(){
         super(Estudiante.class);

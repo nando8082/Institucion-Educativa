@@ -23,7 +23,7 @@ import java.util.List;
  */
 @Model
 public class GrupoControlador {
-    /*@EJB
+    @EJB
     private GrupoFacade gruFacade;
     private Grupo grupo;
     private Long id;
@@ -33,7 +33,7 @@ public class GrupoControlador {
     
     @Produces
     @Model
-    public String titulo() {
+    public String tituloGrupo() {
         return "GESTIÓN DE GRUPOS";
     }
     
@@ -43,14 +43,22 @@ public class GrupoControlador {
         this.docente = new Docente();
         this.asig = new Asignatura();
         this.aula = new Aula();
-    }*/
-    
-    /*public Producto getProducto() {
-        return producto;
     }
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
+    public GrupoFacade getGruFacade() {
+        return gruFacade;
+    }
+
+    public void setGruFacade(GrupoFacade gruFacade) {
+        this.gruFacade = gruFacade;
+    }
+
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
     }
 
     public Long getId() {
@@ -61,47 +69,63 @@ public class GrupoControlador {
         this.id = id;
     }
 
-    public Sucursal getSucursal() {
-        return sucursal;
+    public Docente getDocente() {
+        return docente;
     }
 
-    public void setSucursal(Sucursal sucursal) {
-        this.sucursal = sucursal;
+    public void setDocente(Docente docente) {
+        this.docente = docente;
     }
-    
+
+    public Asignatura getAsig() {
+        return asig;
+    }
+
+    public void setAsig(Asignatura asig) {
+        this.asig = asig;
+    }
+
+    public Aula getAula() {
+        return aula;
+    }
+
+    public void setAula(Aula aula) {
+        this.aula = aula;
+    }
     
     @Produces
     @RequestScoped
-    @Named("listadoProductos")
-    public List<Producto> listarProductos() {
-        
-        List<Producto> prod = prodFacade.listar();
+    @Named("listadoGrups")
+    public List<Grupo> listarGrupos() {
+        List<Grupo> prod = gruFacade.listar();
         return prod;
     }
     
     
     public String guardar(){
         try {
-            producto.setSucursal(sucursal);
-            this.prodFacade.guardar(producto);
+            grupo.setDocente(docente);
+            grupo.setAsignatura(asig);
+            grupo.setAula(aula);
+            this.gruFacade.guardar(grupo);
         } catch (Exception e) {
         }
-        return "Producto.xhtml?faces-redirect=true";
+        return "Grupo.xhtml?faces-redirect=true";
     }
     
     public String eliminar(Long id){
-        prodFacade.eliminar(id);
-        return "Producto.xhtml?faces-redirect=true";
+        gruFacade.eliminar(id);
+        return "Grupo.xhtml?faces-redirect=true";
     }
     
     public String editar(Long id){
         this.id = id;
         
         if (id != null && id > 0) {
-            prodFacade.opcional(id).ifPresent(p -> {
-                this.producto = p;
+            gruFacade.opcional(id).ifPresent(p -> {
+                this.grupo = p;
             });
         }
-        return "form.xhtml";
-    }*/
+        return "Formulario.xhtml";
+    }
 }

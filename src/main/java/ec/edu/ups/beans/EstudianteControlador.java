@@ -103,32 +103,6 @@ public class EstudianteControlador {
         return "Formulario.xhtml";
     }
     
-    public static boolean validarCedula(String cedula) {
-        char digito[] = cedula.toCharArray();
-        int total = 0;
-        for (int i = 0; i < digito.length - 1; i++) {
-            int dato = Integer.parseInt(digito[i] + "");
-            if (i % 2 == 0) {
-                //dato = dato*2 > 9 ? dato*2 - 9 : dato*2;
-                if (dato * 2 > 9) {
-                    dato = (dato * 2) - 9;
-                } else {
-                    dato = dato * 2;
-                }
-            }
-            total += dato;
-        }
-        int ultimo = Integer.parseInt(digito[digito.length - 1] + "");
-        if (total % 10 == 0 && 0 == ultimo) {
-            return true;
-        } else {
-            total = 10 - total % 10;
-            if (total == ultimo) {
-                return true;
-            }
-        }
-        return false;
-    }
     
     public void buscarPorNombre(String nombre){
         System.out.println("*************************************************"+ nombre);

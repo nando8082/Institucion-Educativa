@@ -17,7 +17,7 @@ import java.util.Objects;
  *
  * @author PAUL
  */
-//@NamedQuery(name = "getDocente", query = "SELECT d FROM  Docente d")
+@NamedQuery(name = "getDocentes", query ="SELECT d FROM Docente d")
 @Entity
 public class Docente implements Serializable{
     @Id
